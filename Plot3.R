@@ -13,6 +13,7 @@ baltimore$year <- as.factor(baltimore$year)
 baltimore$type <- as.factor(baltimore$type)
 baltByTypeAndYear <- ddply(baltimore, .(year, type), summarize, sum=sum(Emissions))
 png("Plot3.png", height = 480, width = 480)
+
 p <- qplot(year, sum, data=baltByTypeAndYear, facets = . ~type)
 p + labs(title="Baltimore Emissions by Type", x="Year", y="Emissions Total (tons)")
 dev.off()
